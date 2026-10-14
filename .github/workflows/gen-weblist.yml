@@ -1,0 +1,94 @@
+---
+name: generate-weblist
+on:
+  push:
+    paths:
+      - 'pool/**'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate index.html for pool/
+        run: |
+          cd pool
+          cat > index.html << 'HTMLEOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+          <meta charset="utf-8">
+          <title>deb repo file list</title>
+          <style>
+          body { font-family: monospace; margin: 2em; }
+          a { text-decoration: none; }
+          a:hover { text-decoration: underline; }
+          li { margin: 0.3em 0; }
+          </style>
+          </head>
+          <body>
+          <h1>pool/ file list</h1>
+          <ul>
+          HTMLEOF
+
+          find . -type f -name "*.deb" | sort | while read -r f; do
+            clean="${f#./}"
+            echo "<li><a href=\"$clean\">$clean</a></li>" >> index.html
+          done
+
+          echo "</ul></body></html>" >> index.html
+
+          find . -type d | while read -r d; do
+            [ "$d" = "." ] && continue
+            clean="${d#./}"
+            cat > "$d/index.html" << HTMLEOF
+          <!DOCTYPE html>
+          <html>
+          <head>
+          <meta charset="utf-8">
+          <title>$clean</title>
+          <style>
+          body { font-family: monospace; margin: 2em; }
+          a { text-decoration: none; }
+          a:hover { text-decoration: underline; }
+          li { margin: 0.3em 0; }
+          </style>
+          </head>
+          <body>
+          <h1>$clean/</h1>
+          <p><a href="../index.html">back</a></p>
+          <ul>
+          HTMLEOF
+
+            for f in "$d"/*.deb; do
+              [ -e "$f" ] || continue
+              fname="${f#$d/}"
+              echo "<li><a href=\"$fname\">$fname</a></li>" >> "$d/index.html"
+            done
+
+            for sub in "$d"/*/; do
+              [ -d "$sub" ] || continue
+              subname="${sub#$d/}"
+              subname="${subname%/}"
+              echo "<li>dir $subname/</li>" >> "$d/index.html"
+            done
+
+            echo "</ul></body></html>" >> "$d/index.html"
+          done
+
+          cd ..
+
+      - name: Commit weblist
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add pool/
+          git commit -m "auto generate weblist index.html" || echo "no change"
+          git push
