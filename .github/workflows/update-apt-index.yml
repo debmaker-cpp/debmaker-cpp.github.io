@@ -1,0 +1,27 @@
+name: update-apt-index
+on:
+  push:
+    paths:
+      - 'pool/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: sudo apt-get update && sudo apt-get install -y dpkg-dev apt-utils
+
+      - name: Generate Packages
+        run: |
+          dpkg-scanpackages pool/main /dev/null > dists/termux/main/binary-aarch64/Packages
+          apt-ftparchive release dists/termux/ > dists/termux/Release
+
+      - name: Commit index
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add dists/
+          git commit -m "auto update Packages" || echo "no change"
+          git push
