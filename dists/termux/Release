@@ -1,1 +1,24 @@
-
+Architectures: aarch64
+Codename: termux
+Components: main
+Date: Thu, 15 Oct 2026 10:00:30 +0000
+Description: debmaker-cpp Termux APT Repository
+Label: debmaker-cpp
+Origin: debmaker-cpp
+Suite: termux
+MD5Sum:
+ 0b314eb63ba2b2ef14605a03adcb9303              198 Release
+ 89b93e847e8650fca3f6fb6047354adf             1045 main/binary-aarch64/Packages
+ c7c1376eceacbd57f1c44edb10289f9c              677 main/binary-aarch64/Packages.gz
+SHA1:
+ fdc246b02bc7f2689e0042c0040390338eaa6779              198 Release
+ 6c373944397cc1cc6ea1b18dc616c63f6329df73             1045 main/binary-aarch64/Packages
+ 5ac1c9215d78007b6bf5180b5cc93d47585e2fbe              677 main/binary-aarch64/Packages.gz
+SHA256:
+ 5006bbbf5f44b8d1b5e10fe09f903831a932d67ba5bdeb431ca71b351b795563              198 Release
+ fd0450b3a11a7b24c65e3da7de367a9f9c0ad978646637a98d9f1c4cd12eb79a             1045 main/binary-aarch64/Packages
+ 49d77c949021abac31e95dea23eaa6be737839473c093f769e42dbb741288979              677 main/binary-aarch64/Packages.gz
+SHA512:
+ 5318ed70162dc6d8d541eef1f0d81d0bb9c743367715467d3fc4dad68149001a4fdb38da8205015afd48f96d4651258c34c09dca119d97c55418e2b5d529f642              198 Release
+ 97067fedb69aed40747296adf1f0497e91524fc31cfba3e2334fb4a7bf672e158e360dc9768827db5edf47ab3727f80c7efa2d9baebcfe8ba46b21afee0911fd             1045 main/binary-aarch64/Packages
+ 88dd3756d76333ab4cbba402c786c2e034da9f9f17ce2609475dd75b69c06a1878da83df432035eb179af79a035486cf9387b4c153e66ac45d0c9e220fd4afef              677 main/binary-aarch64/Packages.gz
