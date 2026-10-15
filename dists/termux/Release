@@ -1,13 +1,24 @@
-Date: Wed, 14 Oct 2026 12:53:28 +0000
+Architectures: aarch64
+Codename: termux
+Components: main
+Date: Thu, 15 Oct 2026 09:49:38 +0000
+Description: debmaker-cpp Termux APT Repository
+Label: debmaker-cpp
+Origin: debmaker-cpp
+Suite: termux
 MD5Sum:
- 6ca3a046736507ca03d9dc60cc761339               38 Release
- 8ecd335dd6a9e2e7d404509161df68a3              508 main/binary-aarch64/Packages
+ e691655d5a616cd4c2f5c372d4bb776c              198 Release
+ 89b93e847e8650fca3f6fb6047354adf             1045 main/binary-aarch64/Packages
+ 58f32a5f5302c7fe5eba7282475f4040              677 main/binary-aarch64/Packages.gz
 SHA1:
- 57d4d357ff137cfa273865bc07602ba1a8ed4843               38 Release
- 0927769f8dce53167889e47c6b1d57f87245e034              508 main/binary-aarch64/Packages
+ 9125112a9a1ff011f3c4525b2f9dba157d1bf239              198 Release
+ 6c373944397cc1cc6ea1b18dc616c63f6329df73             1045 main/binary-aarch64/Packages
+ 17a12199057ecc71e69389e573ee26f73e38e07e              677 main/binary-aarch64/Packages.gz
 SHA256:
- 8a5471ebc38b08dc9ff8e9bcf710345e48c70a6ec7497a48d6a27fe401352ded               38 Release
- a0bfc802fa9bf208790270447043af30847acf4bb575f4309d6dfa0e746b5e65              508 main/binary-aarch64/Packages
+ 05afb6315ec4fc67fa3f51989857dd8f0ab14af3fa0b960c2caf8f63e8e2523d              198 Release
+ fd0450b3a11a7b24c65e3da7de367a9f9c0ad978646637a98d9f1c4cd12eb79a             1045 main/binary-aarch64/Packages
+ 8a4bc524c0efc53341bf6983c11cb11891eb2c054c1a178c9bf18d87face27d2              677 main/binary-aarch64/Packages.gz
 SHA512:
- 7d122f044d07d0d934d58900129385318ac3124991a343932787b64e9793b3b386f1735776cdc8900c8ffc4ace719dd06e9062d5dae002be23f670f86b7c424f               38 Release
- 2271baf369597e832e128612ed952aa15ba6645b115069e8aa94b30efe3342baa664a21087e53f3f7f6f155ff5a041c69d6f0b5da22f6c0474f9645bd00857f1              508 main/binary-aarch64/Packages
+ 2f2071aa04b6f77bb806f0228ddcf053b1a14125f66b847e7c7af4ef8e294c0d133bf64a10dc8f636f79443b6e4291477e24f432c49bd3cdc555f249a6fc2afe              198 Release
+ 97067fedb69aed40747296adf1f0497e91524fc31cfba3e2334fb4a7bf672e158e360dc9768827db5edf47ab3727f80c7efa2d9baebcfe8ba46b21afee0911fd             1045 main/binary-aarch64/Packages
+ b9cca38b223be9132e1f7321c09212ab6cc4b6444af90a7ed79396d15eb0101a567fc5e4acb5950cc6125794b7ca827b9aa33cac5cd0d456b7e5af1e596a9567              677 main/binary-aarch64/Packages.gz

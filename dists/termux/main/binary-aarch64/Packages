@@ -12,3 +12,18 @@ Description: Minimal EPUB builder for Termux
  Reads epub.ini + .html files, outputs standard EPUB 3.0.
  Supports auto-scan (list = auto) and manual chapter listing.
 
+Package: zimmaker
+Version: 1.0.0
+Architecture: aarch64
+Maintainer: zimmaker <zimmaker@users.noreply.github.com>
+Depends: libzim, libc++
+Filename: pool/main/z/zimmaker/zimmaker_1.0.0_aarch64.deb
+Size: 40736
+MD5sum: 0020d9d987710e0af6c2889dd8cddae2
+SHA1: df0a6861c106f5cd9c99e1375b2e7cc4804466ff
+SHA256: 01233178a3924729d92fff7cd57be86c562b1a220657e06404883dc947d4157c
+Section: utils
+Priority: optional
+Description: Pack local HTML folder into ZIM for Kiwix on Termux.
+  C++ tool using libzim; runs on aarch64 Termux without proot/glibc.
+
