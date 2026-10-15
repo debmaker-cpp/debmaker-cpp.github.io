@@ -12,6 +12,22 @@ Description: Minimal EPUB builder for Termux
  Reads epub.ini + .html files, outputs standard EPUB 3.0.
  Supports auto-scan (list = auto) and manual chapter listing.
 
+Package: txshop
+Version: 1.0.0
+Architecture: aarch64
+Maintainer: debmaker-cpp <debmaker-cpp@github.io>
+Depends: libc++, libncurses, apt, curl
+Filename: pool/main/t/txshop/txshop_1.0.0_aarch64.deb
+Size: 38296
+MD5sum: 7c3e987518a0fb807dc59d99bcb3684f
+SHA1: ebbf73002fbc090b92b79edd7c4933cc16142b9e
+SHA256: 0a3c5016d20ccc4efb2a5e8a2b613f5dc9bca3e70beb32a0d3ed79050d52f53e
+Section: utils
+Priority: optional
+Homepage: https://debmaker-cpp.github.io
+Description: Termux package manager frontend (ncurses TUI)
+ Search/list/download/install/remove Termux & custom repo packages.
+
 Package: zimmaker
 Version: 1.0.0
 Architecture: aarch64
