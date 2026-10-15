@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>debmaker-cpp.github.io | C/C++ Termux APT Repo</title>
+</head>
+<body>
+<h1>debmaker-cpp</h1>
+<p><b>debmaker-cpp.github.io</b> —— 一个用 GitHub Pages 托管的 Termux APT 源。</p>
+
+<h2>这个仓库是干什么的</h2>
+<p>
+这里存放用 <b>C / C++</b> 编写、在 Termux / Android 手机上构建或交叉编译后，
+打包成 <code>.deb</code> 的软件包。
+你不用手动 <code>dpkg -i</code>，只要添加源，就能用 <code>apt</code> 安装、升级。
+</p>
+
+<h2>支持平台</h2>
+<ul>
+<li>Termux（Android 手机）</li>
+<li>架构：<code>aarch64</code>（手机 ARM64）</li>
+<li>格式：Termux 风格 <code>*.deb</code></li>
+<li>不支持：Debian / Ubuntu x86_64 的普通系统包（Termux 不兼容）</li>
+</ul>
+
+<h2>C/C++ 打包流程</h2>
+<pre>
+C/C++ 源码
+  ↓ 编译（Termux / cross-ng / NDK）
+二进制 + control 文件
+  ↓ dpkg-deb --build
+pool/main/&lt;首字母&gt;/&lt;包名&gt;/xxx_aarch64.deb
+  ↓
+dpkg-scanpackages → Packages
+apt-ftparchive     → Release
+  ↓
+GitHub Pages 自动托管 APT 源
+</pre>
+
+<h2>在 Termux 里添加这个源</h2>
+<pre>
+echo "deb [trusted=yes] https://debmaker-cpp.github.io termux main" \
+  > $PREFIX/etc/apt/sources.list.d/debmaker-cpp.list
+
+apt update
+apt install epubmaker
+</pre>
+
+<p>
+<code>[trusted=yes]</code> 表示暂不校验 GPG 签名，适合个人/测试源。
+以后做签名后可以写成 <code>signed-by=...</code>。
+</p>
+
+<h2>收包规则</h2>
+
+<h3>✅ 接受</h3>
+<ul>
+<li>小包（&lt; 1MB）：工具类、库、脚本封装</li>
+<li>中包（1MB ~ 20MB）：编译器、解释器、游戏、完整 C/C++ 项目</li>
+<li>自己写的 C/C++ 程序</li>
+<li>合法开源软件重新打包（注明原作者/许可证）</li>
+<li>Termux 里能实际运行的 aarch64 .deb</li>
+</ul>
+
+<h3>❌ 拒绝 / 禁止</h3>
+<ul>
+<li><b>任何包含病毒、木马、恶意代码、后门的包</b> —— 发现直接删除 + 拉黑提交者</li>
+<li><b>侮辱、攻击、骚扰他人的内容</b> —— 包括包名、描述、源码注释中的侮辱性文字</li>
+<li><b>极大包（&gt; 50MB 单个 .deb）</b> —— GitHub Pages 有带宽和单文件限制，超大包请放 Release 或用其他托管</li>
+<li>盗号程序、挖矿木马、远程控制木马</li>
+<li>违反中国法律和 GitHub ToS 的内容</li>
+</ul>
+
+<h3>⚠️ 提交前请确认</h3>
+<ul>
+<li>包名不要带侮辱性词汇</li>
+<li>control 文件里的 Description 写清楚用途</li>
+<li>确保 .deb 能在 Termux aarch64 上正常安装运行</li>
+<li>不要提交你没权限分发的闭源二进制</li>
+</ul>
+
+<h2>仓库结构</h2>
+<ul>
+<li><a href="dists/termux/Release">dists/termux/Release</a></li>
+<li><a href="dists/termux/main/binary-aarch64/Packages">dists/termux/main/binary-aarch64/Packages</a></li>
+<li><a href="pool/">pool/（所有 .deb 文件）</a></li>
+<li><a href="pool/main/">pool/main/</a></li>
+</ul>
+
+<h2>可用包示例</h2>
+<ul>
+<li><a href="pool/main/e/epubmaker/epubmaker_1.0.0_aarch64.deb">epubmaker_1.0.0_aarch64.deb</a></li>
+</ul>
+
+<h2>自动更新</h2>
+<p>
+往 <code>pool/</code> 里 push 新的 <code>.deb</code>，
+GitHub Actions 会自动：
+</p>
+<ul>
+<li>重新生成 <code>Packages</code></li>
+<li>重新生成 <code>Release</code></li>
+<li>重新生成网页文件列表</li>
+<li>push 回仓库</li>
+</ul>
+
+<h2>注意事项</h2>
+<ul>
+<li>包必须是 <code>aarch64</code>，否则 Termux 装不了</li>
+<li>不要放 Debian/Ubuntu 的 x86_64 .deb</li>
+<li>单个 .deb 建议 ≤ 20MB，最大不超过 50MB</li>
+<li>GitHub Pages 单文件 ≤ 100MB（硬限制）</li>
+</ul>
+
+<h2>违规处理</h2>
+<ul>
+<li>第一次提交恶意包：删除包 + 警告</li>
+<li>第二次：删除包 + 移除仓库写入权限</li>
+<li>涉及违法内容：举报给 GitHub + 配合执法</li>
+</ul>
+
+<h2>源码</h2>
+<p>
+<a href="https://github.com/debmaker-cpp/debmaker-cpp.github.io">
+github.com/debmaker-cpp/debmaker-cpp.github.io
+</a>
+</p>
+
+<hr>
+<p><small>debmaker-cpp · C/C++ packages for Termux · no CSS, just plain HTML</small></p>
+</body>
+</html>
