@@ -12,6 +12,17 @@ Description: Minimal EPUB builder for Termux
  Reads epub.ini + .html files, outputs standard EPUB 3.0.
  Supports auto-scan (list = auto) and manual chapter listing.
 
+Package: libncurses
+Version: 6.5-1
+Architecture: aarch64
+Maintainer: fake
+Filename: pool/main/l/libncurses/libncurses_6.5-1_aarch64.deb
+Size: 672
+MD5sum: 1bc00bc759daa9963224781e891f9b25
+SHA1: 7ef793ed836f030400d669ff6bd6fc916d5917ee
+SHA256: fc96ffc7bc15a49e205b71c78f46d2eef7027ffa7202126033b4680d5485cf96
+Description: Fake package to satisfy libncurses dependency
+
 Package: txshop
 Version: 1.0.0
 Architecture: aarch64
