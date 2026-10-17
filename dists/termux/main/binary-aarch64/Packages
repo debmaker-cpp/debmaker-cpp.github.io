@@ -12,21 +12,6 @@ Description: Minimal EPUB builder for Termux
  Reads epub.ini + .html files, outputs standard EPUB 3.0.
  Supports auto-scan (list = auto) and manual chapter listing.
 
-Package: hedit
-Version: 1.0.0
-Architecture: aarch64
-Maintainer: debmaker-cpp <debmaker-cpp@github>
-Depends: libncurses, termux-tools
-Filename: pool/main/h/hedit/hedit_1.0.0_aarch64.deb
-Size: 34472
-MD5sum: 08619937b27e659d6d9d81498d2080ed
-SHA1: 1b2ef06cc77ead56c37ec1d8936d2a7113762427
-SHA256: d9dd2e3538625052f95e44b17a7f0de7b5a87f5c6415558c4b46547e5d349186
-Description: HEdit - Terminal HTML Editor + Runner
- A ncurses-based HTML editor for Termux with built-in HTTP server,
- w3m preview (auto-install), and real-time title display.
- Supports project folders (HTML/CSS/JS/images all served).
-
 Package: libncurses
 Version: 6.5-1
 Architecture: aarch64
