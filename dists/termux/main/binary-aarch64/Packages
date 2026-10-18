@@ -12,6 +12,22 @@ Section: utils
 Priority: optional
 Description: Termux weather + hitokoto + news push tool (ncurses)
 
+Package: epubmaker
+Version: 2.0.0
+Architecture: aarch64
+Maintainer: You <you@example.com>
+Filename: pool/main/e/epubmaker/epubmaker_2.0.0_aarch64.deb
+Size: 36480
+MD5sum: 40de4a300e8b7394eaface7d1d8482f9
+SHA1: cb32cd61b52ec950c2ca66854e30e272612c6b6d
+SHA256: fcf4e8c89e2360c5638cceaf1e92afa45651617adb704497bfbedd172dd9b596
+Section: utils
+Priority: optional
+Description: EPUB ebook generator for Termux
+ epubmaker++ (fix_amp + strip_html_shell edition)
+ Auto-strips HTML shell from chapter files, fixes bare &,
+ prevents epub overwrite, outputs to ~/epub_out/.
+
 Package: hedit
 Version: 1.0.1
 Architecture: aarch64
