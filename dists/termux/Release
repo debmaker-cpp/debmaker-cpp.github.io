@@ -1,24 +1,24 @@
 Architectures: aarch64
 Codename: termux
 Components: main
-Date: Sun, 18 Oct 2026 13:52:56 +0000
+Date: Sun, 18 Oct 2026 13:53:24 +0000
 Description: debmaker-cpp Termux APT Repository
 Label: debmaker-cpp
 Origin: debmaker-cpp
 Suite: termux
 MD5Sum:
- add3e3994454704e321f0f86b0e60922              198 Release
+ f5d929444f6f7bed08979c920c841633              198 Release
  feebec40a00f834d4384d1ddfbdff44c             3094 main/binary-aarch64/Packages
- c0d9f07b0de0b487ad1dd7de34623c40             1506 main/binary-aarch64/Packages.gz
+ 7c25df552d0cbcd8d2957b7722254112             1506 main/binary-aarch64/Packages.gz
 SHA1:
- f96e9c601dafaabbb089c734059013f97973b165              198 Release
+ 1b0b1b9c9a30740310919c2520ec325c41224e85              198 Release
  e757384089e3fd19024a6fb4b475e4e31a93de4a             3094 main/binary-aarch64/Packages
- 809684a10a24a515678868232dcd367024f4db7f             1506 main/binary-aarch64/Packages.gz
+ 82f31fcfbf036acc7647f7587520b82468494bc8             1506 main/binary-aarch64/Packages.gz
 SHA256:
- 6547b893847453bdd09d9b818c3325a4e23617aa273d19a8567d0aa04367f1a5              198 Release
+ 7896097f623267f77882b3d88707ceeb26592f583d0f812ee63c943e7a5b2505              198 Release
  32f10ee7df072d659c9d3c01a135e95697bf42c2e35eaaa9896fcc79aa3a3b23             3094 main/binary-aarch64/Packages
- 21bd05b2ca52f8ac55f00eb110d790c7db29664bb9a555771e547ac89eac8e25             1506 main/binary-aarch64/Packages.gz
+ 9709f6fd17b93dfff3fa0378f45a2bdd428ee4a69baff6a6b55cd3b1f393215c             1506 main/binary-aarch64/Packages.gz
 SHA512:
- a8635298d4b9f5bdf6fca8b1d757a193dfc3da8174ccec59063c1533d500d9776cfc5e686ce71791a861c5499716e891f978e6e5d0a35b7b478174dbdc3e3ad8              198 Release
+ 27d9ddb7393b905dbbfa4dd15ae5437dc89d67a7dd59c59d400e66e2075275b5ff87918fa9221e16be15504fd498571cc2d8dfc200d7f1532ca57acf933e99b3              198 Release
  ff88baa026f462c7531c5e28a0471c136a859c29e101646c8bf23cde0304c98265222b8b866aab1fc18ddd1a641851151e205c696e7c4287443f8c6876c63d53             3094 main/binary-aarch64/Packages
- 656b9402b0593e48b4763e30d1004feba30baccf92cf9626169d5660cf3195e58fd09863f2381d003fb076ff64a4c084c323a17aff216ea40ea581191a897412             1506 main/binary-aarch64/Packages.gz
+ 0e4d7b1605d0be3234e5892ef9391a20cf074b5c62a57c21ab6e9a4ada0d318171119a4c2cd73d24d37750c3f5d48bcd6f33ac360df4f2c8330da5c3aea05f4b             1506 main/binary-aarch64/Packages.gz
