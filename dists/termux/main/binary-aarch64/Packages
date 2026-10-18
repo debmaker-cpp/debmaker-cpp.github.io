@@ -1,17 +1,3 @@
-Package: empur-tui
-Version: 0.2.1
-Architecture: aarch64
-Maintainer: yourname <you@example.com>
-Depends: libcurl, ncurses, termux-api
-Filename: pool/main/e/empur/empur-tui_0.2.1_aarch64.deb
-Size: 27860
-MD5sum: 23fe2225b205414aede38642dbf831e7
-SHA1: 4b69750bf0a16ae286774e65fe04ad8d5dfc554f
-SHA256: a26ca463fd472d5a611446702e65021fe6f017687093f8f8b1bc78c709da2f49
-Section: utils
-Priority: optional
-Description: Termux weather + hitokoto + news push tool (ncurses)
-
 Package: epubmaker
 Version: 1.0.0
 Architecture: aarch64
