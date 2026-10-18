@@ -143,65 +143,6 @@ apt install epubmaker</pre>
 
 </div>
 
-<script>
-const PKG_URL = "https://debmaker-cpp.github.io/dists/termux/main/binary-aarch64/Packages";
-const CACHE = "debmaker:pkgs:v1";
-let data = [];
-
-function parse(text){
-  return text.split(/\n\s*\n/).map(b=>{
-    const o={};
-    b.split("\n").forEach(l=>{
-      const i=l.indexOf(":");
-      if(i<0) return;
-      const k=l.slice(0,i).trim().toLowerCase();
-      if(!o[k]) o[k]=l.slice(i+1).trim();
-    });
-    return o;
-  }).filter(o=>o.package);
-}
-
-function esc(s){return(s||"").replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]));}
-
-function render(){
-  const el=document.getElementById("list");
-  if(!data.length){
-    el.innerHTML='<div class="empty">暂无包数据</div>';
-    return;
-  }
-  el.innerHTML = data.map(o=>`
-    <div class="pkg">
-      <span class="v">${esc(o.version)} · ${esc(o.architecture)}</span>
-      <h3>${esc(o.package)}</h3>
-      <p>${esc(o.description)||'<span style="color:#aaa">无描述</span>'}</p>
-      <div class="tags">
-        ${o.section?`<span class="tag">${esc(o.section)}</span>`:""}
-        ${o.maintainer?`<span class="tag">${esc(o.maintainer.replace(/[<>]/g,""))}</span>`:""}
-        ${o.size?`<span class="tag">${Math.round(o.size/1024)} KB</span>`:""}
-      </div>
-    </div>`).join("");
-  document.getElementById("n").textContent = `共 ${data.length} 个包`;
-}
-
-(async()=>{
-  try{
-    const c=JSON.parse(localStorage.getItem(CACHE)||"null")||{};
-    if(c.t && Date.now()-c.t < 1.8e6){ data=c.d; }
-    else{
-      const r=await fetch(PKG_URL,{cache:"no-store"});
-      if(!r.ok) throw new Error("Packages 返回 "+r.status);
-      data=parse(await r.text());
-      localStorage.setItem(CACHE,JSON.stringify({t:Date.now(),d:data}));
-    }
-    render();
-  }catch(e){
-    console.error(e);
-    document.getElementById("err").innerHTML =
-      `<div class="err"><b>包列表抓取失败：</b>${e.message}<br>
-      可能是 GitHub Pages 未开 CORS，或仓库结构已变更。</div>`;
-    document.getElementById("list").innerHTML='<div class="empty">暂无包数据</div>';
-  }
-})();
-</script>
+<script src="main.js"></script>
 </body>
 </html>
