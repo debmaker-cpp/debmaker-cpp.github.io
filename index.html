@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>debmaker-cpp · Termux APT 源</title>
+<style>
+:root{--ink:#111;--sub:#888;--line:#e8e8e8}
+*{box-sizing:border-box}
+body{margin:0;background:#fcfcfc;color:var(--ink);
+font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:26px 16px 60px}
+.wrap{max-width:660px;margin:0 auto}
+h1{font-size:20px;margin:0 0 6px}
+.sub{font-size:12px;color:var(--sub);margin-bottom:24px}
+h2{font-size:15px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:14px;margin:20px 0 8px}
+p,li{font-size:14px}
+code,pre{font:12.5px/1.6 ui-monospace,Menlo,Consolas,monospace}
+pre{background:#f4f4f4;border:1px solid var(--line);border-radius:5px;padding:12px 14px;overflow:auto}
+code{background:#f4f4f4;padding:1px 5px;border-radius:3px}
+a{color:var(--ink)}
+ul{padding-left:20px}
+li{margin:3px 0}
+.ok{color:#1a7f37}.bad{color:#b42318}.warn{color:#9a6700}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0 14px}
+small{color:var(--sub);font-size:11px}
+
+/* 应用列表 */
+.pkg{border:1px solid var(--line);border-radius:6px;padding:13px 15px;margin-bottom:9px;background:#fff}
+.pkg h3{margin:0 0 2px;font-size:15px}
+.pkg .v{font-size:11px;color:var(--sub);float:right}
+.pkg p{margin:3px 0 0;font-size:13px;color:#555}
+.tags{margin-top:7px;font-size:11px;color:var(--sub)}
+.tag{border:1px solid var(--line);border-radius:3px;padding:0 6px;margin:0 3px 3px 0;display:inline-block}
+.empty{color:var(--sub);font-size:13px;padding:24px 0;text-align:center}
+.err{border-left:2px solid #b42318;padding:10px 13px;font-size:13px;margin-bottom:14px}
+#n{color:var(--sub);font-size:11px;margin-top:20px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>debmaker-cpp</h1>
+  <div class="sub">C/C++ 软件包 · Termux APT 源 · aarch64</div>
+
+  <div id="err"></div>
+
+  <h2>可用包</h2>
+  <div id="list"><div class="empty">加载中…</div></div>
+  <div id="n"></div>
+
+  <h2>这个源是干什么的</h2>
+  <p>存放用 <b>C / C++</b> 编写、在 Termux / Android 上构建或交叉编译后打包成
+  <code>.deb</code> 的软件包。添加源后即可用 <code>apt</code> 安装升级，无需手动
+  <code>dpkg -i</code>。</p>
+
+  <h2>支持平台</h2>
+  <ul>
+    <li>Termux（Android 手机）</li>
+    <li>架构：<code>aarch64</code></li>
+    <li>格式：Termux 风格 <code>*.deb</code></li>
+    <li class="bad">不支持 Debian / Ubuntu x86_64（Termux 不兼容）</li>
+  </ul>
+
+  <h2>打包流程</h2>
+<pre>C/C++ 源码
+  ↓ 编译（Termux / cross-ng / NDK）
+二进制 + control 文件
+  ↓ dpkg-deb --build
+pool/main/&lt;首字母&gt;/&lt;包名&gt;/xxx_aarch64.deb
+  ↓
+dpkg-scanpackages → Packages
+apt-ftparchive   → Release
+  ↓
+GitHub Pages 托管 APT 源</pre>
+
+  <h2>添加这个源</h2>
+<pre>mkdir -p $PREFIX/etc/apt/sources.list.d
+echo "deb [trusted=yes] https://debmaker-cpp.github.io termux main" \
+  &gt; $PREFIX/etc/apt/sources.list.d/debmaker-cpp.list
+apt update
+apt install epubmaker</pre>
+  <p><code>[trusted=yes]</code> 表示暂不校验 GPG 签名，适合个人 / 测试源；做签名后改为
+  <code>signed-by=...</code>。</p>
+
+  <h2>收包规则</h2>
+  <h3 class="ok">✅ 接受</h3>
+  <ul>
+    <li>小包（&lt; 1MB）：工具类、库、脚本封装</li>
+    <li>中包（1MB ~ 20MB）：编译器、解释器、游戏、完整 C/C++ 项目</li>
+    <li>自己写的 C/C++ 程序</li>
+    <li>合法开源软件重新打包（需注明原作者 / 许可证）</li>
+    <li>能在 Termux aarch64 上运行的 .deb</li>
+  </ul>
+  <h3 class="bad">❌ 拒绝</h3>
+  <ul>
+    <li>含病毒、木马、恶意代码、后门的包 —— 删除 + 拉黑</li>
+    <li>侮辱、攻击、骚扰他人的内容（含包名、描述、注释）</li>
+    <li>单个 &gt; 50MB 的包 —— 请放 GitHub Releases 或其他托管</li>
+    <li>盗号程序、挖矿木马、远控木马</li>
+    <li>违反中国法律与 GitHub ToS 的内容</li>
+  </ul>
+  <h3 class="warn">⚠️ 提交前确认</h3>
+  <ul>
+    <li>包名不带侮辱性词汇</li>
+    <li>control 里 Description 写清用途</li>
+    <li>.deb 能在 Termux aarch64 上安装运行</li>
+    <li>不提交无权限分发的闭源二进制</li>
+  </ul>
+
+  <h2>仓库结构</h2>
+  <ul>
+    <li><a href="dists/termux/Release">dists/termux/Release</a></li>
+    <li><a href="dists/termux/main/binary-aarch64/Packages">Packages</a></li>
+    <li><a href="pool/">pool/</a></li>
+    <li><a href="pool/main/">pool/main/</a></li>
+  </ul>
+
+  <h2>自动更新</h2>
+  <p>往 <code>pool/</code> push 新的 <code>.deb</code>，GitHub Actions 自动重新生成
+  Packages、Release 与网页文件列表并 push 回仓库。</p>
+
+  <h2>注意事项</h2>
+  <ul>
+    <li>包必须是 <code>aarch64</code></li>
+    <li>不放 Debian / Ubuntu 的 x86_64 .deb</li>
+    <li>单个 .deb 建议 ≤ 20MB，最大 ≤ 50MB</li>
+    <li>GitHub Pages 单文件 ≤ 100MB（硬限制）</li>
+  </ul>
+
+  <h2>违规处理</h2>
+  <ul>
+    <li>第一次：删包 + 警告</li>
+    <li>第二次：删包 + 移除写入权限</li>
+    <li>涉及违法内容：举报 GitHub + 配合执法</li>
+  </ul>
+
+  <h2>源码</h2>
+  <p><a href="https://github.com/debmaker-cpp/debmaker-cpp.github.io">github.com/debmaker-cpp/debmaker-cpp.github.io</a></p>
+
+  <hr>
+  <small>debmaker-cpp · C/C++ packages for Termux · no CSS framework, just plain CSS</small>
+
+</div>
+
+<script>
+const PKG_URL = "https://debmaker-cpp.github.io/dists/termux/main/binary-aarch64/Packages";
+const CACHE = "debmaker:pkgs:v1";
+let data = [];
+
+function parse(text){
+  return text.split(/\n\s*\n/).map(b=>{
+    const o={};
+    b.split("\n").forEach(l=>{
+      const i=l.indexOf(":");
+      if(i<0) return;
+      const k=l.slice(0,i).trim().toLowerCase();
+      if(!o[k]) o[k]=l.slice(i+1).trim();
+    });
+    return o;
+  }).filter(o=>o.package);
+}
+
+function esc(s){return(s||"").replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]));}
+
+function render(){
+  const el=document.getElementById("list");
+  if(!data.length){
+    el.innerHTML='<div class="empty">暂无包数据</div>';
+    return;
+  }
+  el.innerHTML = data.map(o=>`
+    <div class="pkg">
+      <span class="v">${esc(o.version)} · ${esc(o.architecture)}</span>
+      <h3>${esc(o.package)}</h3>
+      <p>${esc(o.description)||'<span style="color:#aaa">无描述</span>'}</p>
+      <div class="tags">
+        ${o.section?`<span class="tag">${esc(o.section)}</span>`:""}
+        ${o.maintainer?`<span class="tag">${esc(o.maintainer.replace(/[<>]/g,""))}</span>`:""}
+        ${o.size?`<span class="tag">${Math.round(o.size/1024)} KB</span>`:""}
+      </div>
+    </div>`).join("");
+  document.getElementById("n").textContent = `共 ${data.length} 个包`;
+}
+
+(async()=>{
+  try{
+    const c=JSON.parse(localStorage.getItem(CACHE)||"null")||{};
+    if(c.t && Date.now()-c.t < 1.8e6){ data=c.d; }
+    else{
+      const r=await fetch(PKG_URL,{cache:"no-store"});
+      if(!r.ok) throw new Error("Packages 返回 "+r.status);
+      data=parse(await r.text());
+      localStorage.setItem(CACHE,JSON.stringify({t:Date.now(),d:data}));
+    }
+    render();
+  }catch(e){
+    console.error(e);
+    document.getElementById("err").innerHTML =
+      `<div class="err"><b>包列表抓取失败：</b>${e.message}<br>
+      可能是 GitHub Pages 未开 CORS，或仓库结构已变更。</div>`;
+    document.getElementById("list").innerHTML='<div class="empty">暂无包数据</div>';
+  }
+})();
+</script>
+</body>
+</html>
