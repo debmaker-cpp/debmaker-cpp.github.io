@@ -12,20 +12,6 @@ Section: utils
 Priority: optional
 Description: Termux weather + hitokoto + news push tool (ncurses)
 
-Package: epubmaker
-Version: 1.0.0
-Architecture: aarch64
-Maintainer: 你的名字 <你的邮箱>
-Depends: zip
-Filename: pool/main/e/epubmaker/epubmaker_1.0.0_aarch64.deb
-Size: 33724
-MD5sum: 0b257831e0e261941bbf8587ef880838
-SHA1: 78a0562db32fb7e84cf68bc3ad63a6f9b822237d
-SHA256: 80cdef5d9ca17f3dca984ff73936172ae69935707c2d09575a0ddc27a4eafc48
-Description: Minimal EPUB builder for Termux
- Reads epub.ini + .html files, outputs standard EPUB 3.0.
- Supports auto-scan (list = auto) and manual chapter listing.
-
 Package: hedit
 Version: 1.0.1
 Architecture: aarch64
