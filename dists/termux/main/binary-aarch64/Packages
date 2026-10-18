@@ -1,3 +1,19 @@
+Package: empur-tui
+Version: 0.2
+Architecture: aarch64
+Maintainer: you <you@example.com>
+Depends: libcurl, ncurses, termux-api
+Filename: pool/main/e/empur/empur-tui_0.2_aarch64.deb
+Size: 31220
+MD5sum: 2a82dfda789277bf7fd8d51436c5a18b
+SHA1: 8f85d5cce66131612f942e93f5f5332e198c2431
+SHA256: c6f651d53cef11e3c80b01150cb0cb68198edd5a1d4203769c7372cb2a044485
+Section: utils
+Priority: optional
+Description: Weather + hitokoto + news pusher for Termux
+ empur-tui shows weather, hitokoto and news headlines.
+ Run 'empur' for settings UI, 'empur push' to send a notification.
+
 Package: epubmaker
 Version: 1.0.0
 Architecture: aarch64
