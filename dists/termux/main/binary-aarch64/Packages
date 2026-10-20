@@ -70,6 +70,22 @@ Homepage: https://debmaker-cpp.github.io
 Description: Termux package manager frontend (ncurses TUI)
  Search/list/download/install/remove Termux & custom repo packages.
 
+Package: wx-p2p
+Version: 1.0.0
+Architecture: aarch64
+Maintainer: Hollo <Hollo@hotmail.com>
+Depends: libc++ (>= 23)
+Filename: pool/main/w/wx-p2p/wx-p2p_1.0.0_aarch64.deb
+Size: 36548
+MD5sum: 66a2bde2ea329fa69371764f314d174e
+SHA1: cb2dcca787edd87a5d252efb05cd5107571e58c5
+SHA256: c7612eb289fb27ccdf1c4893a4d812246dd5032d28851560fa3964cb0551f463
+Section: net
+Priority: optional
+Description: wx-p2p - ephemeral LAN group chat server
+ A zero-persistence, no-moderation P2P web chat tool.
+ Pure C++, in-memory only, exit = wipe.
+
 Package: zimmaker
 Version: 1.0.0
 Architecture: aarch64
